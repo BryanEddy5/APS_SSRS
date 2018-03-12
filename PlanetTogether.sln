@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "PlanetTogether", "PlanetTogether\PlanetTogether.rptproj", "{3119AABF-C7A4-4BE8-BCEC-1CB032C4B4E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3119AABF-C7A4-4BE8-BCEC-1CB032C4B4E6}.Debug|Default.ActiveCfg = Debug
+		{3119AABF-C7A4-4BE8-BCEC-1CB032C4B4E6}.Debug|Default.Build.0 = Debug
+		{3119AABF-C7A4-4BE8-BCEC-1CB032C4B4E6}.Debug|Default.Deploy.0 = Debug
+		{3119AABF-C7A4-4BE8-BCEC-1CB032C4B4E6}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{3119AABF-C7A4-4BE8-BCEC-1CB032C4B4E6}.DebugLocal|Default.Build.0 = DebugLocal
+		{3119AABF-C7A4-4BE8-BCEC-1CB032C4B4E6}.Release|Default.ActiveCfg = Release
+		{3119AABF-C7A4-4BE8-BCEC-1CB032C4B4E6}.Release|Default.Build.0 = Release
+		{3119AABF-C7A4-4BE8-BCEC-1CB032C4B4E6}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC21172E-B4FD-45A5-AD65-69D9C1434D0D}
+	EndGlobalSection
+EndGlobal
