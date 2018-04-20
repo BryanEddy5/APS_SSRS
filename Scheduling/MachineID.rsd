@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Description />
+  <DataSet Name="MachineID">
+    <Query>
+      <DataSourceReference>PlanetTogether_Data</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="@Equipment">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>true</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText>SELECT MachineID
+FROM Setup.vMachineNames
+WHERE MachineName = @Equipment</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="MachineID">
+        <DataField>MachineID</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

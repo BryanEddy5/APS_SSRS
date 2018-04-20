@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "PlanetTogether", "PlanetTogether\PlanetTogether.rptproj", "{3119AABF-C7A4-4BE8-BCEC-1CB032C4B4E6}"
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Alerts", "Alerts\Alerts.rptproj", "{F71462B8-83FD-45C9-A56B-73042FFDEB8A}"
+EndProject
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Scheduling", "Scheduling\Scheduling.rptproj", "{D57C1C2A-4F0E-4E23-BDAA-42086195202F}"
+EndProject
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Supply Chain", "Supply Chain\Supply Chain.rptproj", "{43951B34-2A46-465F-A6C2-F70C07D891B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,14 +16,30 @@ Global
 		Release|Default = Release|Default
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3119AABF-C7A4-4BE8-BCEC-1CB032C4B4E6}.Debug|Default.ActiveCfg = Debug
-		{3119AABF-C7A4-4BE8-BCEC-1CB032C4B4E6}.Debug|Default.Build.0 = Debug
-		{3119AABF-C7A4-4BE8-BCEC-1CB032C4B4E6}.Debug|Default.Deploy.0 = Debug
-		{3119AABF-C7A4-4BE8-BCEC-1CB032C4B4E6}.DebugLocal|Default.ActiveCfg = DebugLocal
-		{3119AABF-C7A4-4BE8-BCEC-1CB032C4B4E6}.DebugLocal|Default.Build.0 = DebugLocal
-		{3119AABF-C7A4-4BE8-BCEC-1CB032C4B4E6}.Release|Default.ActiveCfg = Release
-		{3119AABF-C7A4-4BE8-BCEC-1CB032C4B4E6}.Release|Default.Build.0 = Release
-		{3119AABF-C7A4-4BE8-BCEC-1CB032C4B4E6}.Release|Default.Deploy.0 = Release
+		{F71462B8-83FD-45C9-A56B-73042FFDEB8A}.Debug|Default.ActiveCfg = Debug
+		{F71462B8-83FD-45C9-A56B-73042FFDEB8A}.Debug|Default.Build.0 = Debug
+		{F71462B8-83FD-45C9-A56B-73042FFDEB8A}.Debug|Default.Deploy.0 = Debug
+		{F71462B8-83FD-45C9-A56B-73042FFDEB8A}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{F71462B8-83FD-45C9-A56B-73042FFDEB8A}.DebugLocal|Default.Build.0 = DebugLocal
+		{F71462B8-83FD-45C9-A56B-73042FFDEB8A}.Release|Default.ActiveCfg = Release
+		{F71462B8-83FD-45C9-A56B-73042FFDEB8A}.Release|Default.Build.0 = Release
+		{F71462B8-83FD-45C9-A56B-73042FFDEB8A}.Release|Default.Deploy.0 = Release
+		{D57C1C2A-4F0E-4E23-BDAA-42086195202F}.Debug|Default.ActiveCfg = Debug
+		{D57C1C2A-4F0E-4E23-BDAA-42086195202F}.Debug|Default.Build.0 = Debug
+		{D57C1C2A-4F0E-4E23-BDAA-42086195202F}.Debug|Default.Deploy.0 = Debug
+		{D57C1C2A-4F0E-4E23-BDAA-42086195202F}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{D57C1C2A-4F0E-4E23-BDAA-42086195202F}.DebugLocal|Default.Build.0 = DebugLocal
+		{D57C1C2A-4F0E-4E23-BDAA-42086195202F}.Release|Default.ActiveCfg = Release
+		{D57C1C2A-4F0E-4E23-BDAA-42086195202F}.Release|Default.Build.0 = Release
+		{D57C1C2A-4F0E-4E23-BDAA-42086195202F}.Release|Default.Deploy.0 = Release
+		{43951B34-2A46-465F-A6C2-F70C07D891B0}.Debug|Default.ActiveCfg = Debug
+		{43951B34-2A46-465F-A6C2-F70C07D891B0}.Debug|Default.Build.0 = Debug
+		{43951B34-2A46-465F-A6C2-F70C07D891B0}.Debug|Default.Deploy.0 = Debug
+		{43951B34-2A46-465F-A6C2-F70C07D891B0}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{43951B34-2A46-465F-A6C2-F70C07D891B0}.DebugLocal|Default.Build.0 = DebugLocal
+		{43951B34-2A46-465F-A6C2-F70C07D891B0}.Release|Default.ActiveCfg = Release
+		{43951B34-2A46-465F-A6C2-F70C07D891B0}.Release|Default.Build.0 = Release
+		{43951B34-2A46-465F-A6C2-F70C07D891B0}.Release|Default.Deploy.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

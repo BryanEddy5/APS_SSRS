@@ -8,12 +8,11 @@
     <OverwriteDataSources>True</OverwriteDataSources>
     <TargetServerVersion>SSRS2008R2</TargetServerVersion>
     <Platform>Win32</Platform>
-    <TargetReportFolder>PlanetTogether</TargetReportFolder>
+    <TargetReportFolder>Alerts</TargetReportFolder>
     <TargetDatasetFolder>Datasets</TargetDatasetFolder>
     <TargetDatasourceFolder>Data Sources</TargetDatasourceFolder>
     <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
     <TargetServerURL>http://naacab-sch01/ReportServer</TargetServerURL>
-    <StartItem>ProductionSchedule.rdl</StartItem>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'DebugLocal' ">
     <FullPath>DebugLocal</FullPath>
@@ -23,7 +22,7 @@
     <OverwriteDataSources>False</OverwriteDataSources>
     <TargetServerVersion>SSRS2016</TargetServerVersion>
     <Platform>Win32</Platform>
-    <TargetReportFolder>PlanetTogether</TargetReportFolder>
+    <TargetReportFolder>Alerts</TargetReportFolder>
     <TargetDatasetFolder>Datasets</TargetDatasetFolder>
     <TargetDatasourceFolder>Data Sources</TargetDatasourceFolder>
     <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
@@ -37,7 +36,7 @@
     <OverwriteDataSources>False</OverwriteDataSources>
     <TargetServerVersion>SSRS2016</TargetServerVersion>
     <Platform>Win32</Platform>
-    <TargetReportFolder>PlanetTogether</TargetReportFolder>
+    <TargetReportFolder>Alerts</TargetReportFolder>
     <TargetDatasetFolder>Datasets</TargetDatasetFolder>
     <TargetDatasourceFolder>Data Sources</TargetDatasourceFolder>
     <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
@@ -50,15 +49,15 @@
     <Reports>@(Report)</Reports>
   </PropertyGroup>
   <ItemGroup>
-    <DataSet Include="Department.rsd" />
-    <DataSet Include="MachineNames.rsd" />
-    <DataSet Include="Plant.rsd" />
-  </ItemGroup>
-  <ItemGroup>
     <DataSource Include="PlanetTogether_Data.rds" />
   </ItemGroup>
   <ItemGroup>
-    <Report Include="ProductionSchedule.rdl" />
+    <Report Include="Dj Op Seq Run Conflict.rdl" />
+    <Report Include="Mfg Hold.rdl" />
+    <Report Include="Orders  Master Exclusion List.rdl" />
+    <Report Include="Scheduler Machine Capability Issue.rdl" />
+    <Report Include="Short Ship.rdl" />
+    <Report Include="Stale Materials.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
 </Project>
