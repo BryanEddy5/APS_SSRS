@@ -53,6 +53,7 @@
     <DataSource Include="PlanetTogether_Data.rds" />
   </ItemGroup>
   <ItemGroup>
+    <Report Include="OpenPOs.rdl" />
     <Report Include="Wire Demand Status Report.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />

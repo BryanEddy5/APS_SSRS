@@ -71,7 +71,7 @@ WHERE @Equipment = P.[current_op_machine]</CommandText>
       </Field>
       <Field Name="oracle_dj_status">
         <DataField>oracle_dj_status</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
+        <rd:TypeName>System.DateTime</rd:TypeName>
       </Field>
       <Field Name="part_no">
         <DataField>part_no</DataField>
@@ -79,11 +79,11 @@ WHERE @Equipment = P.[current_op_machine]</CommandText>
       </Field>
       <Field Name="job_qty">
         <DataField>job_qty</DataField>
-        <rd:TypeName>System.Double</rd:TypeName>
+        <rd:TypeName>System.String</rd:TypeName>
       </Field>
       <Field Name="ujcm">
         <DataField>ujcm</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
+        <rd:TypeName>System.Double</rd:TypeName>
       </Field>
       <Field Name="promise_date">
         <DataField>promise_date</DataField>
@@ -91,7 +91,7 @@ WHERE @Equipment = P.[current_op_machine]</CommandText>
       </Field>
       <Field Name="earliest_material_availability_date">
         <DataField>earliest_material_availability_date</DataField>
-        <rd:TypeName>System.DateTime</rd:TypeName>
+        <rd:TypeName>System.String</rd:TypeName>
       </Field>
       <Field Name="scheduled_end_date">
         <DataField>scheduled_end_date</DataField>
@@ -103,11 +103,11 @@ WHERE @Equipment = P.[current_op_machine]</CommandText>
       </Field>
       <Field Name="scheduled_run_hours">
         <DataField>scheduled_run_hours</DataField>
-        <rd:TypeName>System.Double</rd:TypeName>
+        <rd:TypeName>System.DateTime</rd:TypeName>
       </Field>
       <Field Name="scheduled_setup_hours">
         <DataField>scheduled_setup_hours</DataField>
-        <rd:TypeName>System.Double</rd:TypeName>
+        <rd:TypeName>System.DateTime</rd:TypeName>
       </Field>
       <Field Name="scheduled_total_hours">
         <DataField>scheduled_total_hours</DataField>
@@ -115,7 +115,7 @@ WHERE @Equipment = P.[current_op_machine]</CommandText>
       </Field>
       <Field Name="late_order">
         <DataField>late_order</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
+        <rd:TypeName>System.Double</rd:TypeName>
       </Field>
       <Field Name="Plant">
         <DataField>Plant</DataField>
@@ -127,7 +127,7 @@ WHERE @Equipment = P.[current_op_machine]</CommandText>
       </Field>
       <Field Name="DepartmentID">
         <DataField>DepartmentID</DataField>
-        <rd:TypeName>System.Int32</rd:TypeName>
+        <rd:TypeName>System.DateTime</rd:TypeName>
       </Field>
       <Field Name="sf_group_id">
         <DataField>sf_group_id</DataField>
@@ -135,31 +135,31 @@ WHERE @Equipment = P.[current_op_machine]</CommandText>
       </Field>
       <Field Name="remake">
         <DataField>remake</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
+        <rd:TypeName>System.Double</rd:TypeName>
       </Field>
       <Field Name="PromiseLatenessDays">
         <DataField>PromiseLatenessDays</DataField>
-        <rd:TypeName>System.Double</rd:TypeName>
+        <rd:TypeName>System.String</rd:TypeName>
       </Field>
       <Field Name="CableColor">
         <DataField>CableColor</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
+        <rd:TypeName>System.Int32</rd:TypeName>
       </Field>
       <Field Name="NominalOD">
         <DataField>NominalOD</DataField>
-        <rd:TypeName>System.Double</rd:TypeName>
+        <rd:TypeName>System.String</rd:TypeName>
       </Field>
       <Field Name="NumberCorePositions">
         <DataField>NumberCorePositions</DataField>
-        <rd:TypeName>System.Int32</rd:TypeName>
+        <rd:TypeName>System.String</rd:TypeName>
       </Field>
       <Field Name="UpJacketCM">
         <DataField>UpJacketCM</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
+        <rd:TypeName>System.Int32</rd:TypeName>
       </Field>
       <Field Name="JacketMaterial">
         <DataField>JacketMaterial</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
+        <rd:TypeName>System.Double</rd:TypeName>
       </Field>
       <Field Name="EndsOfAramid">
         <DataField>EndsOfAramid</DataField>
@@ -167,7 +167,11 @@ WHERE @Equipment = P.[current_op_machine]</CommandText>
       </Field>
       <Field Name="FiberCount">
         <DataField>FiberCount</DataField>
-        <rd:TypeName>System.Int32</rd:TypeName>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Printed">
+        <DataField>Printed</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
       </Field>
     </Fields>
   </DataSet>
