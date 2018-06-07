@@ -49,6 +49,9 @@
     <Reports>@(Report)</Reports>
   </PropertyGroup>
   <ItemGroup>
+    <DataSet Include="SchedulePublishDate.rsd" />
+  </ItemGroup>
+  <ItemGroup>
     <DataSource Include="PlanetTogether_Data.rds" />
   </ItemGroup>
   <ItemGroup>
@@ -57,7 +60,6 @@
     <Report Include="Orders  Master Exclusion List.rdl" />
     <Report Include="Scheduler Machine Capability Issue.rdl" />
     <Report Include="Short Ship.rdl" />
-    <Report Include="Stale Materials.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
 </Project>

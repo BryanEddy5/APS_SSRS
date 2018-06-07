@@ -53,7 +53,10 @@
     <DataSource Include="PlanetTogether_Data.rds" />
   </ItemGroup>
   <ItemGroup>
+    <Report Include="ACS Order Review.rdl" />
     <Report Include="OpenPOs.rdl" />
+    <Report Include="Specialty Order Detail Report.rdl" />
+    <Report Include="Stale Materials.rdl" />
     <Report Include="Wire Demand Status Report.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />

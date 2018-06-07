@@ -1,93 +1,140 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
-  <Description>Report of conflicting operation statuses for a discrete job</Description>
-  <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Description>Report of ACS Orders</Description>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="PlanetTogether_Data">
       <DataSourceReference>PlanetTogether_Data</DataSourceReference>
       <rd:SecurityType>None</rd:SecurityType>
-      <rd:DataSourceID>cc47a1b7-90a8-432a-8e37-576a4f54b65b</rd:DataSourceID>
+      <rd:DataSourceID>13892a36-340f-4c75-be91-b071d7a632ba</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet1">
       <Query>
         <DataSourceName>PlanetTogether_Data</DataSourceName>
-        <CommandText>SELECT wip_entity_name,
-       operation_seq_num,
-       true_operation_seq_num,
-       c_status,
-       p_status,
-       operation_code,
-       department_code,
-       c_setup_start_time,
-       c_run_start,
-       run_end_time,
-       op_quantity_completed,
-       start_quantity
-FROM Scheduling.vDjStatusConflict</CommandText>
-        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <QueryParameters>
+          <QueryParameter Name="@CustomerName">
+            <Value>=Parameters!CustomerName.Value</Value>
+            <rd:UserDefined>true</rd:UserDefined>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT
+  _report_3c_acs_order_status_review.conc_order_number
+  ,_report_3c_acs_order_status_review.customer_name
+  ,_report_3c_acs_order_status_review.job
+  ,_report_3c_acs_order_status_review.part_number
+  ,_report_3c_acs_order_status_review.so_qty
+  ,_report_3c_acs_order_status_review.request_date
+  ,_report_3c_acs_order_status_review.promise_date
+  ,_report_3c_acs_order_status_review.schedule_ship_date
+  ,_report_3c_acs_order_status_review.schedule_approved
+  ,_report_3c_acs_order_status_review.scheduled_setup_start
+  ,_report_3c_acs_order_status_review.machine_name
+  ,_report_3c_acs_order_status_review.component_item
+  ,_report_3c_acs_order_status_review.ProductionStatus
+  ,_report_3c_acs_order_status_review.material_earliest_start_date
+  ,_report_3c_acs_order_status_review.last_update_date
+FROM
+dbo._report_3c_acs_order_status_review
+WHERE customer_name in (@CustomerName)</CommandText>
+        <rd:DesignerState>
+          <QueryDefinition xmlns="http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational">
+            <SelectedColumns>
+              <ColumnExpression ColumnOwner="_report_3c_acs_order_status_review" ColumnName="conc_order_number" />
+              <ColumnExpression ColumnOwner="_report_3c_acs_order_status_review" ColumnName="customer_name" />
+              <ColumnExpression ColumnOwner="_report_3c_acs_order_status_review" ColumnName="job" />
+              <ColumnExpression ColumnOwner="_report_3c_acs_order_status_review" ColumnName="part_number" />
+              <ColumnExpression ColumnOwner="_report_3c_acs_order_status_review" ColumnName="so_qty" />
+              <ColumnExpression ColumnOwner="_report_3c_acs_order_status_review" ColumnName="request_date" />
+              <ColumnExpression ColumnOwner="_report_3c_acs_order_status_review" ColumnName="promise_date" />
+              <ColumnExpression ColumnOwner="_report_3c_acs_order_status_review" ColumnName="schedule_ship_date" />
+              <ColumnExpression ColumnOwner="_report_3c_acs_order_status_review" ColumnName="schedule_approved" />
+              <ColumnExpression ColumnOwner="_report_3c_acs_order_status_review" ColumnName="scheduled_setup_start" />
+              <ColumnExpression ColumnOwner="_report_3c_acs_order_status_review" ColumnName="machine_name" />
+              <ColumnExpression ColumnOwner="_report_3c_acs_order_status_review" ColumnName="component_item" />
+              <ColumnExpression ColumnOwner="_report_3c_acs_order_status_review" ColumnName="ProductionStatus" />
+              <ColumnExpression ColumnOwner="_report_3c_acs_order_status_review" ColumnName="material_earliest_start_date" />
+              <ColumnExpression ColumnOwner="_report_3c_acs_order_status_review" ColumnName="last_update_date" />
+            </SelectedColumns>
+          </QueryDefinition>
+        </rd:DesignerState>
       </Query>
       <Fields>
-        <Field Name="wip_entity_name">
-          <DataField>wip_entity_name</DataField>
+        <Field Name="conc_order_number">
+          <DataField>conc_order_number</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="operation_seq_num">
-          <DataField>operation_seq_num</DataField>
+        <Field Name="customer_name">
+          <DataField>customer_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="job">
+          <DataField>job</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="part_number">
+          <DataField>part_number</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="so_qty">
+          <DataField>so_qty</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
-        <Field Name="true_operation_seq_num">
-          <DataField>true_operation_seq_num</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
-        </Field>
-        <Field Name="c_status">
-          <DataField>c_status</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="p_status">
-          <DataField>p_status</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="operation_code">
-          <DataField>operation_code</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="department_code">
-          <DataField>department_code</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="c_setup_start_time">
-          <DataField>c_setup_start_time</DataField>
+        <Field Name="request_date">
+          <DataField>request_date</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="c_run_start">
-          <DataField>c_run_start</DataField>
+        <Field Name="promise_date">
+          <DataField>promise_date</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="run_end_time">
-          <DataField>run_end_time</DataField>
+        <Field Name="schedule_ship_date">
+          <DataField>schedule_ship_date</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="op_quantity_completed">
-          <DataField>op_quantity_completed</DataField>
+        <Field Name="schedule_approved">
+          <DataField>schedule_approved</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="start_quantity">
-          <DataField>start_quantity</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
+        <Field Name="scheduled_setup_start">
+          <DataField>scheduled_setup_start</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-      </Fields>
-    </DataSet>
-    <DataSet Name="SchedulePublishDate">
-      <SharedDataSet>
-        <SharedDataSetReference>SchedulePublishDate</SharedDataSetReference>
-      </SharedDataSet>
-      <Fields>
+        <Field Name="machine_name">
+          <DataField>machine_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="component_item">
+          <DataField>component_item</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductionStatus">
+          <DataField>ProductionStatus</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="material_earliest_start_date">
+          <DataField>material_earliest_start_date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
         <Field Name="last_update_date">
           <DataField>last_update_date</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="CustomerNames">
+      <Query>
+        <DataSourceName>PlanetTogether_Data</DataSourceName>
+        <CommandText>SELECT DISTINCT customer_name
+FROM dbo._report_3c_acs_order_status_review
+ORDER BY customer_name
+</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="customer_name">
+          <DataField>customer_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
@@ -96,47 +143,14 @@ FROM Scheduling.vDjStatusConflict</CommandText>
     <ReportSection>
       <Body>
         <ReportItems>
-          <Textbox Name="textbox1">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>DJ Status Conflict </Value>
-                    <Style>
-                      <FontFamily>Segoe UI Light</FontFamily>
-                      <FontSize>24pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>textbox1</rd:DefaultName>
-            <Top>0.02777in</Top>
-            <Left>0.00001in</Left>
-            <Height>0.43in</Height>
-            <Width>2.98958in</Width>
-            <Style>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Tablix Name="table1">
+          <Tablix Name="Tablix1">
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.65625in</Width>
+                  <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.15625in</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>1.20834in</Width>
+                  <Width>3.31667in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1in</Width>
@@ -148,7 +162,19 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                   <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>1.56667in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.61667in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.81667in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1in</Width>
@@ -160,28 +186,28 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                   <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>1.6in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>1.61667in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.44042in</Height>
+                  <Height>0.25in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="textbox2">
+                        <Textbox Name="Textbox2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Job</Value>
+                                  <Value>conc order number</Value>
                                   <Style>
-                                    <FontFamily />
+                                    <FontFamily>Tahoma</FontFamily>
                                     <FontSize>11pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -193,30 +219,13 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>textbox2</rd:DefaultName>
+                          <rd:DefaultName>Textbox2</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>White</Color>
+                              <Color>#7292cc</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>White</Color>
-                              <Style>Dotted</Style>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </RightBorder>
-                            <BackgroundColor>CornflowerBlue</BackgroundColor>
-                            <FontFamily />
+                            <BackgroundColor>#4c68a2</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -227,16 +236,16 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="textbox3">
+                        <Textbox Name="Textbox3">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Op Seq</Value>
+                                  <Value>customer name</Value>
                                   <Style>
-                                    <FontFamily />
+                                    <FontFamily>Tahoma</FontFamily>
                                     <FontSize>11pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -244,35 +253,17 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <FontFamily />
                                 <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>textbox3</rd:DefaultName>
+                          <rd:DefaultName>Textbox3</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>White</Color>
+                              <Color>#7292cc</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>White</Color>
-                              <Style>Dotted</Style>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </RightBorder>
-                            <BackgroundColor>CornflowerBlue</BackgroundColor>
-                            <FontFamily />
+                            <BackgroundColor>#4c68a2</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -283,16 +274,16 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="textbox4">
+                        <Textbox Name="Textbox5">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>True Op Seq</Value>
+                                  <Value>job</Value>
                                   <Style>
-                                    <FontFamily />
+                                    <FontFamily>Tahoma</FontFamily>
                                     <FontSize>11pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -300,35 +291,17 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <FontFamily />
                                 <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>textbox4</rd:DefaultName>
+                          <rd:DefaultName>Textbox5</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>White</Color>
+                              <Color>#7292cc</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>White</Color>
-                              <Style>Dotted</Style>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </RightBorder>
-                            <BackgroundColor>CornflowerBlue</BackgroundColor>
-                            <FontFamily />
+                            <BackgroundColor>#4c68a2</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -346,9 +319,9 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>job status</Value>
+                                  <Value>part number</Value>
                                   <Style>
-                                    <FontFamily />
+                                    <FontFamily>Tahoma</FontFamily>
                                     <FontSize>11pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -363,26 +336,10 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                           <rd:DefaultName>Textbox7</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>White</Color>
+                              <Color>#7292cc</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>White</Color>
-                              <Style>Dotted</Style>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </RightBorder>
-                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <BackgroundColor>#4c68a2</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -400,9 +357,9 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>operation status</Value>
+                                  <Value>so qty</Value>
                                   <Style>
-                                    <FontFamily />
+                                    <FontFamily>Tahoma</FontFamily>
                                     <FontSize>11pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -417,26 +374,10 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                           <rd:DefaultName>Textbox9</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>White</Color>
+                              <Color>#7292cc</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>White</Color>
-                              <Style>Dotted</Style>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </RightBorder>
-                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <BackgroundColor>#4c68a2</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -454,9 +395,9 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>operation code</Value>
+                                  <Value>request date</Value>
                                   <Style>
-                                    <FontFamily />
+                                    <FontFamily>Tahoma</FontFamily>
                                     <FontSize>11pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -471,26 +412,48 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                           <rd:DefaultName>Textbox11</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>White</Color>
+                              <Color>#7292cc</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>White</Color>
-                              <Style>Dotted</Style>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>White</Color>
+                            <BackgroundColor>#4c68a2</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox13">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>promise date</Value>
+                                  <Style>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox13</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>#7292cc</Color>
                               <Style>Solid</Style>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </RightBorder>
-                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            </Border>
+                            <BackgroundColor>#4c68a2</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -508,9 +471,9 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>department code</Value>
+                                  <Value>schedule ship date</Value>
                                   <Style>
-                                    <FontFamily />
+                                    <FontFamily>Tahoma</FontFamily>
                                     <FontSize>11pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -525,26 +488,10 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                           <rd:DefaultName>Textbox15</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>White</Color>
+                              <Color>#7292cc</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>White</Color>
-                              <Style>Dotted</Style>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </RightBorder>
-                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <BackgroundColor>#4c68a2</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -562,9 +509,9 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>setup start time</Value>
+                                  <Value>schedule approved</Value>
                                   <Style>
-                                    <FontFamily />
+                                    <FontFamily>Tahoma</FontFamily>
                                     <FontSize>11pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -579,26 +526,10 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                           <rd:DefaultName>Textbox17</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>White</Color>
+                              <Color>#7292cc</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>White</Color>
-                              <Style>Dotted</Style>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </RightBorder>
-                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <BackgroundColor>#4c68a2</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -616,9 +547,9 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>run start</Value>
+                                  <Value>scheduled setup start</Value>
                                   <Style>
-                                    <FontFamily />
+                                    <FontFamily>Tahoma</FontFamily>
                                     <FontSize>11pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -633,26 +564,10 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                           <rd:DefaultName>Textbox19</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>White</Color>
+                              <Color>#7292cc</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>White</Color>
-                              <Style>Dotted</Style>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </RightBorder>
-                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <BackgroundColor>#4c68a2</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -670,9 +585,9 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>run end time</Value>
+                                  <Value>machine name</Value>
                                   <Style>
-                                    <FontFamily />
+                                    <FontFamily>Tahoma</FontFamily>
                                     <FontSize>11pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -687,26 +602,10 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                           <rd:DefaultName>Textbox21</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>White</Color>
+                              <Color>#7292cc</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>White</Color>
-                              <Style>Dotted</Style>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </RightBorder>
-                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <BackgroundColor>#4c68a2</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -724,9 +623,9 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>op quantity completed</Value>
+                                  <Value>component item</Value>
                                   <Style>
-                                    <FontFamily />
+                                    <FontFamily>Tahoma</FontFamily>
                                     <FontSize>11pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -741,26 +640,10 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                           <rd:DefaultName>Textbox23</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>White</Color>
+                              <Color>#7292cc</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>White</Color>
-                              <Style>Dotted</Style>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </RightBorder>
-                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <BackgroundColor>#4c68a2</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -778,9 +661,9 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>start quantity</Value>
+                                  <Value>Production Status</Value>
                                   <Style>
-                                    <FontFamily />
+                                    <FontFamily>Tahoma</FontFamily>
                                     <FontSize>11pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -795,26 +678,86 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                           <rd:DefaultName>Textbox25</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>White</Color>
+                              <Color>#7292cc</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>White</Color>
-                              <Style>Dotted</Style>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>White</Color>
+                            <BackgroundColor>#4c68a2</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox27">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>material earliest start date</Value>
+                                  <Style>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox27</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>#7292cc</Color>
                               <Style>Solid</Style>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>White</Color>
+                            </Border>
+                            <BackgroundColor>#4c68a2</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox29">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>last update date</Value>
+                                  <Style>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox29</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>#7292cc</Color>
                               <Style>Solid</Style>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>White</Color>
-                              <Style>Solid</Style>
-                            </RightBorder>
-                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            </Border>
+                            <BackgroundColor>#4c68a2</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -826,21 +769,21 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.21in</Height>
+                  <Height>0.25in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="wip_entity_name">
+                        <Textbox Name="conc_order_number">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!wip_entity_name.Value</Value>
+                                  <Value>=Fields!conc_order_number.Value</Value>
                                   <Style>
-                                    <FontFamily />
-                                    <Color>#333333</Color>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -849,15 +792,12 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>wip_entity_name</rd:DefaultName>
+                          <rd:DefaultName>conc_order_number</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                            </Border>
-                            <BottomBorder>
+                              <Color>#e5e5e5</Color>
                               <Style>Solid</Style>
-                            </BottomBorder>
-                            <FontFamily />
+                            </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -868,17 +808,17 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="operation_seq_num">
+                        <Textbox Name="customer_name">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!operation_seq_num.Value</Value>
+                                  <Value>=Fields!customer_name.Value</Value>
                                   <Style>
-                                    <FontFamily />
-                                    <Color>#333333</Color>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -887,15 +827,12 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>operation_seq_num</rd:DefaultName>
+                          <rd:DefaultName>customer_name</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                            </Border>
-                            <BottomBorder>
+                              <Color>#e5e5e5</Color>
                               <Style>Solid</Style>
-                            </BottomBorder>
-                            <FontFamily />
+                            </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -906,17 +843,17 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="true_operation_seq_num">
+                        <Textbox Name="job">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!true_operation_seq_num.Value</Value>
+                                  <Value>=Fields!job.Value</Value>
                                   <Style>
-                                    <FontFamily />
-                                    <Color>#333333</Color>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -925,15 +862,12 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>true_operation_seq_num</rd:DefaultName>
+                          <rd:DefaultName>job</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                            </Border>
-                            <BottomBorder>
+                              <Color>#e5e5e5</Color>
                               <Style>Solid</Style>
-                            </BottomBorder>
-                            <FontFamily />
+                            </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -944,17 +878,17 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="c_status">
+                        <Textbox Name="part_number">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!c_status.Value</Value>
+                                  <Value>=Fields!part_number.Value</Value>
                                   <Style>
-                                    <FontFamily />
-                                    <Color>#333333</Color>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -963,14 +897,12 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>c_status</rd:DefaultName>
+                          <rd:DefaultName>part_number</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                            </Border>
-                            <BottomBorder>
+                              <Color>#e5e5e5</Color>
                               <Style>Solid</Style>
-                            </BottomBorder>
+                            </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -981,17 +913,17 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="p_status">
+                        <Textbox Name="so_qty">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!p_status.Value</Value>
+                                  <Value>=Sum(Fields!so_qty.Value)</Value>
                                   <Style>
-                                    <FontFamily />
-                                    <Color>#333333</Color>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1000,14 +932,12 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>p_status</rd:DefaultName>
+                          <rd:DefaultName>so_qty</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                            </Border>
-                            <BottomBorder>
+                              <Color>#e5e5e5</Color>
                               <Style>Solid</Style>
-                            </BottomBorder>
+                            </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1018,17 +948,17 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="operation_code">
+                        <Textbox Name="request_date">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!operation_code.Value</Value>
+                                  <Value>=Fields!request_date.Value</Value>
                                   <Style>
-                                    <FontFamily />
-                                    <Color>#333333</Color>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1037,14 +967,12 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>operation_code</rd:DefaultName>
+                          <rd:DefaultName>request_date</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                            </Border>
-                            <BottomBorder>
+                              <Color>#e5e5e5</Color>
                               <Style>Solid</Style>
-                            </BottomBorder>
+                            </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1055,17 +983,17 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="department_code1">
+                        <Textbox Name="promise_date">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!department_code.Value</Value>
+                                  <Value>=Fields!promise_date.Value</Value>
                                   <Style>
-                                    <FontFamily />
-                                    <Color>#333333</Color>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1074,14 +1002,12 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>department_code1</rd:DefaultName>
+                          <rd:DefaultName>promise_date</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                            </Border>
-                            <BottomBorder>
+                              <Color>#e5e5e5</Color>
                               <Style>Solid</Style>
-                            </BottomBorder>
+                            </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1092,17 +1018,17 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="c_setup_start_time">
+                        <Textbox Name="schedule_ship_date">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!c_setup_start_time.Value</Value>
+                                  <Value>=Fields!schedule_ship_date.Value</Value>
                                   <Style>
-                                    <FontFamily />
-                                    <Color>#333333</Color>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1111,14 +1037,12 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>c_setup_start_time</rd:DefaultName>
+                          <rd:DefaultName>schedule_ship_date</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                            </Border>
-                            <BottomBorder>
+                              <Color>#e5e5e5</Color>
                               <Style>Solid</Style>
-                            </BottomBorder>
+                            </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1129,17 +1053,17 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="c_run_start">
+                        <Textbox Name="schedule_approved">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!c_run_start.Value</Value>
+                                  <Value>=Fields!schedule_approved.Value</Value>
                                   <Style>
-                                    <FontFamily />
-                                    <Color>#333333</Color>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1148,14 +1072,12 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>c_run_start</rd:DefaultName>
+                          <rd:DefaultName>schedule_approved</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                            </Border>
-                            <BottomBorder>
+                              <Color>#e5e5e5</Color>
                               <Style>Solid</Style>
-                            </BottomBorder>
+                            </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1166,17 +1088,17 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="run_end_time">
+                        <Textbox Name="scheduled_setup_start">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!run_end_time.Value</Value>
+                                  <Value>=Fields!scheduled_setup_start.Value</Value>
                                   <Style>
-                                    <FontFamily />
-                                    <Color>#333333</Color>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1185,14 +1107,12 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>run_end_time</rd:DefaultName>
+                          <rd:DefaultName>scheduled_setup_start</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                            </Border>
-                            <BottomBorder>
+                              <Color>#e5e5e5</Color>
                               <Style>Solid</Style>
-                            </BottomBorder>
+                            </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1203,17 +1123,17 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="op_quantity_completed">
+                        <Textbox Name="machine_name">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!op_quantity_completed.Value</Value>
+                                  <Value>=Fields!machine_name.Value</Value>
                                   <Style>
-                                    <FontFamily />
-                                    <Color>#333333</Color>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1222,14 +1142,12 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>op_quantity_completed</rd:DefaultName>
+                          <rd:DefaultName>machine_name</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                            </Border>
-                            <BottomBorder>
+                              <Color>#e5e5e5</Color>
                               <Style>Solid</Style>
-                            </BottomBorder>
+                            </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1240,17 +1158,17 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="start_quantity">
+                        <Textbox Name="component_item">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!start_quantity.Value</Value>
+                                  <Value>=Fields!component_item.Value</Value>
                                   <Style>
-                                    <FontFamily />
-                                    <Color>#333333</Color>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1259,14 +1177,117 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>start_quantity</rd:DefaultName>
+                          <rd:DefaultName>component_item</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                            </Border>
-                            <BottomBorder>
+                              <Color>#e5e5e5</Color>
                               <Style>Solid</Style>
-                            </BottomBorder>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ProductionStatus">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!ProductionStatus.Value</Value>
+                                  <Style>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <Color>#4d4d4d</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ProductionStatus</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>#e5e5e5</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="material_earliest_start_date">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!material_earliest_start_date.Value</Value>
+                                  <Style>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <Color>#4d4d4d</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>material_earliest_start_date</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>#e5e5e5</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="last_update_date">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!last_update_date.Value</Value>
+                                  <Style>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <Color>#4d4d4d</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>last_update_date</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>#e5e5e5</Color>
+                              <Style>Solid</Style>
+                            </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1293,58 +1314,53 @@ FROM Scheduling.vDjStatusConflict</CommandText>
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
               <TablixMembers>
                 <TablixMember>
                   <KeepWithGroup>After</KeepWithGroup>
-                  <RepeatOnNewPage>true</RepeatOnNewPage>
-                  <KeepTogether>true</KeepTogether>
                 </TablixMember>
                 <TablixMember>
-                  <Group Name="table1_Details_Group">
-                    <DataElementName>Detail</DataElementName>
-                  </Group>
-                  <TablixMembers>
-                    <TablixMember />
-                  </TablixMembers>
-                  <DataElementName>Detail_Collection</DataElementName>
-                  <DataElementOutput>Output</DataElementOutput>
-                  <KeepTogether>true</KeepTogether>
+                  <Group Name="Details" />
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Top>0.45777in</Top>
-            <Height>0.65042in</Height>
-            <Width>13.02084in</Width>
-            <ZIndex>1</ZIndex>
-            <Style />
+            <Top>0.41389in</Top>
+            <Height>0.5in</Height>
+            <Width>21.63335in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
           </Tablix>
-          <Textbox Name="PublishDate">
+          <Textbox Name="ReportTitle">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="Publish Date:  " + First(Fields!last_update_date.Value, "SchedulePublishDate")</Value>
+                    <Value>ACS Order Review  </Value>
                     <Style>
-                      <FontFamily>Segoe UI Light</FontFamily>
-                      <FontSize>24pt</FontSize>
-                      <Format>g</Format>
+                      <FontFamily>Verdana</FontFamily>
+                      <FontSize>20pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>0.05556in</Top>
-            <Left>3.23959in</Left>
-            <Height>0.38833in</Height>
-            <Width>7.5625in</Width>
-            <ZIndex>2</ZIndex>
+            <rd:WatermarkTextbox>Title</rd:WatermarkTextbox>
+            <rd:DefaultName>ReportTitle</rd:DefaultName>
+            <Height>0.4in</Height>
+            <Width>5.5in</Width>
+            <ZIndex>1</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1356,11 +1372,25 @@ FROM Scheduling.vDjStatusConflict</CommandText>
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>1.10819in</Height>
-        <Style />
+        <Height>2.26389in</Height>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
       </Body>
-      <Width>16.46875in</Width>
+      <Width>21.63335in</Width>
       <Page>
+        <PageFooter>
+          <Height>0.45in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>
         <TopMargin>1in</TopMargin>
@@ -1369,14 +1399,34 @@ FROM Scheduling.vDjStatusConflict</CommandText>
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="CustomerName">
+      <DataType>String</DataType>
+      <Prompt>CustomerName</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>CustomerNames</DataSetName>
+          <ValueField>customer_name</ValueField>
+          <LabelField>customer_name</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+  </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
       <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>CustomerName</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
-  <Language>en-US</Language>
-  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>71c84456-23b6-4b02-87e4-8b3cc21f700f</rd:ReportID>
+  <rd:ReportServerUrl>https://naacab-sch01.naa.fujikurausa.com/ReportServer</rd:ReportServerUrl>
+  <rd:ReportID>49448a7b-a66e-47b9-bffb-6832c0ba2711</rd:ReportID>
 </Report>

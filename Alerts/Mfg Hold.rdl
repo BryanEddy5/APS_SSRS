@@ -57,6 +57,17 @@ FROM Scheduling.vAlertMfgHold</CommandText>
         </Field>
       </Fields>
     </DataSet>
+    <DataSet Name="SchedulePublishDate">
+      <SharedDataSet>
+        <SharedDataSetReference>SchedulePublishDate</SharedDataSetReference>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="last_update_date">
+          <DataField>last_update_date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
   </DataSets>
   <ReportSections>
     <ReportSection>
@@ -77,7 +88,7 @@ FROM Scheduling.vAlertMfgHold</CommandText>
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>=Globals!ExecutionTime</Value>
+                    <Value>="Publish Date:  " + First(Fields!last_update_date.Value, "SchedulePublishDate")</Value>
                     <Style>
                       <FontFamily>Segoe UI Light</FontFamily>
                       <FontSize>24pt</FontSize>
@@ -89,6 +100,7 @@ FROM Scheduling.vAlertMfgHold</CommandText>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>textbox1</rd:DefaultName>
+            <Top>0.01389in</Top>
             <Height>0.43in</Height>
             <Width>9in</Width>
             <Style>
@@ -967,11 +979,7 @@ FROM Scheduling.vAlertMfgHold</CommandText>
                   <KeepTogether>true</KeepTogether>
                 </TablixMember>
                 <TablixMember>
-                  <Group Name="table1_order_number">
-                    <GroupExpressions>
-                      <GroupExpression>=Fields!order_number.Value</GroupExpression>
-                    </GroupExpressions>
-                  </Group>
+                  <Group Name="table1_order_number" />
                   <SortExpressions>
                     <SortExpression>
                       <Value>=Fields!order_number.Value</Value>
@@ -991,17 +999,17 @@ FROM Scheduling.vAlertMfgHold</CommandText>
                 <Value>=Fields!promise_date.Value</Value>
               </SortExpression>
             </SortExpressions>
-            <Top>0.43in</Top>
+            <Top>0.44389in</Top>
             <Height>0.64in</Height>
             <Width>9in</Width>
             <ZIndex>1</ZIndex>
             <Style />
           </Tablix>
         </ReportItems>
-        <Height>1.07in</Height>
+        <Height>1.08389in</Height>
         <Style />
       </Body>
-      <Width>9in</Width>
+      <Width>11.84375in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>

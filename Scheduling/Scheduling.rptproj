@@ -56,6 +56,7 @@
     <DataSet Include="Plant.rsd" />
     <DataSet Include="PlantDepartment.rsd" />
     <DataSet Include="ProductionSchedule.rsd" />
+    <DataSet Include="SchedulePublishDate.rsd" />
     <DataSet Include="WeekEndDate.rsd" />
     <DataSet Include="WeekStartDate.rsd" />
   </ItemGroup>

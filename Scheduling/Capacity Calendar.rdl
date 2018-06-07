@@ -118,6 +118,17 @@ ORDER BY StartDateTime, machine_name</CommandText>
         </Field>
       </Fields>
     </DataSet>
+    <DataSet Name="SchedulePublishDate">
+      <SharedDataSet>
+        <SharedDataSetReference>SchedulePublishDate</SharedDataSetReference>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="last_update_date">
+          <DataField>last_update_date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
   </DataSets>
   <ReportSections>
     <ReportSection>
@@ -138,7 +149,8 @@ ORDER BY StartDateTime, machine_name</CommandText>
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>=Globals!ExecutionTime</Value>
+                    <Label>PublisDate</Label>
+                    <Value>="Publish Date:  " + First(Fields!last_update_date.Value, "SchedulePublishDate")</Value>
                     <Style>
                       <FontFamily>Segoe UI Light</FontFamily>
                       <FontSize>24pt</FontSize>

@@ -14,8 +14,15 @@
     <DataSet Name="DataSet1">
       <Query>
         <DataSourceName>PlanetTogether_Data</DataSourceName>
-        <CommandText>SELECT *
+        <CommandText>SELECT conc_order_number,
+       customer_name,
+       ItemNumber,
+       order_status,
+       customer_number,
+       parent_dj_number,
+       schedule_approved
 FROM Setup.vExcludedOrdersAll
+WHERE order_status = 'BOOKED'
 ORDER BY [conc_order_number], [parent_dj_number]</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
@@ -50,6 +57,17 @@ ORDER BY [conc_order_number], [parent_dj_number]</CommandText>
         </Field>
       </Fields>
     </DataSet>
+    <DataSet Name="SchedulePublishDate">
+      <SharedDataSet>
+        <SharedDataSetReference>SchedulePublishDate</SharedDataSetReference>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="last_update_date">
+          <DataField>last_update_date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
   </DataSets>
   <ReportSections>
     <ReportSection>
@@ -75,7 +93,7 @@ ORDER BY [conc_order_number], [parent_dj_number]</CommandText>
             </Paragraphs>
             <rd:DefaultName>textbox1</rd:DefaultName>
             <Height>0.43in</Height>
-            <Width>6in</Width>
+            <Width>5.25in</Width>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
@@ -690,17 +708,50 @@ ORDER BY [conc_order_number], [parent_dj_number]</CommandText>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Top>0.43in</Top>
+            <Top>0.44389in</Top>
             <Height>0.64in</Height>
             <Width>10.4375in</Width>
             <ZIndex>1</ZIndex>
             <Style />
           </Tablix>
+          <Textbox Name="PublishDate">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="Publish Date:  " + First(Fields!last_update_date.Value, "SchedulePublishDate")</Value>
+                    <Style>
+                      <FontFamily>Segoe UI Light</FontFamily>
+                      <FontSize>24pt</FontSize>
+                      <Format>g</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.02778in</Top>
+            <Left>5.27778in</Left>
+            <Height>0.38833in</Height>
+            <Width>7.5625in</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>1.07in</Height>
+        <Height>1.08389in</Height>
         <Style />
       </Body>
-      <Width>10.4375in</Width>
+      <Width>13.67708in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>

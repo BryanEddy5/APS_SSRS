@@ -61,6 +61,17 @@ FROM Scheduling.vAlertShortShip</CommandText>
         </Field>
       </Fields>
     </DataSet>
+    <DataSet Name="SchedulePublishDate">
+      <SharedDataSet>
+        <SharedDataSetReference>SchedulePublishDate</SharedDataSetReference>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="last_update_date">
+          <DataField>last_update_date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
   </DataSets>
   <ReportSections>
     <ReportSection>
@@ -73,15 +84,7 @@ FROM Scheduling.vAlertShortShip</CommandText>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Short Ship  </Value>
-                    <Style>
-                      <FontFamily>Segoe UI Light</FontFamily>
-                      <FontSize>24pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                  <TextRun>
-                    <Value>=Globals!ExecutionTime</Value>
+                    <Value>Short Ship </Value>
                     <Style>
                       <FontFamily>Segoe UI Light</FontFamily>
                       <FontSize>24pt</FontSize>
@@ -94,7 +97,7 @@ FROM Scheduling.vAlertShortShip</CommandText>
             </Paragraphs>
             <rd:DefaultName>textbox1</rd:DefaultName>
             <Height>0.43in</Height>
-            <Width>10in</Width>
+            <Width>2in</Width>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
@@ -984,6 +987,39 @@ FROM Scheduling.vAlertShortShip</CommandText>
             <ZIndex>1</ZIndex>
             <Style />
           </Tablix>
+          <Textbox Name="PublishDate">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="Publish Date:  " + First(Fields!last_update_date.Value, "SchedulePublishDate")</Value>
+                    <Style>
+                      <FontFamily>Segoe UI Light</FontFamily>
+                      <FontSize>24pt</FontSize>
+                      <Format>g</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.01389in</Top>
+            <Left>2in</Left>
+            <Height>0.38833in</Height>
+            <Width>7.5625in</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
         <Height>1.08389in</Height>
         <Style />

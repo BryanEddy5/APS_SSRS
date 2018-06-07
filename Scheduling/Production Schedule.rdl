@@ -305,6 +305,17 @@ WHERE Department = @Department</CommandText>
         </Field>
       </Fields>
     </DataSet>
+    <DataSet Name="SchedulePublishDate">
+      <SharedDataSet>
+        <SharedDataSetReference>SchedulePublishDate</SharedDataSetReference>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="last_update_date">
+          <DataField>last_update_date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
   </DataSets>
   <ReportSections>
     <ReportSection>
@@ -3441,27 +3452,22 @@ Fields!current_op_machine.Value = "Hold","Red")</BackgroundColor>
                 <TablixMember />
                 <TablixMember>
                   <Visibility>
-                    <Hidden>=not(Parameters!DepartmentID.Value = "8")</Hidden>
+                    <Hidden>=not(Parameters!DepartmentID.Value = "8" OR Parameters!DepartmentID.Value = "29")</Hidden>
                   </Visibility>
                 </TablixMember>
                 <TablixMember>
                   <Visibility>
-                    <Hidden>=not(Parameters!DepartmentID.Value = "8")</Hidden>
+                    <Hidden>=not(Parameters!DepartmentID.Value = "8" OR Parameters!DepartmentID.Value = "29")</Hidden>
                   </Visibility>
                 </TablixMember>
                 <TablixMember>
                   <Visibility>
-                    <Hidden>=NOT(Parameters!DepartmentID.Value = "5")</Hidden>
+                    <Hidden>=NOT(Parameters!DepartmentID.Value = "5" OR Parameters!DepartmentID.Value = "10")</Hidden>
                   </Visibility>
                 </TablixMember>
                 <TablixMember>
                   <Visibility>
-                    <Hidden>=not(Parameters!DepartmentID.Value = "5" OR Parameters!DepartmentID.Value = "6")</Hidden>
-                  </Visibility>
-                </TablixMember>
-                <TablixMember>
-                  <Visibility>
-                    <Hidden>=NOT(Parameters!DepartmentID.Value = "6")</Hidden>
+                    <Hidden>=not(Parameters!DepartmentID.Value = "5" OR Parameters!DepartmentID.Value = "6" OR Parameters!DepartmentID.Value = "10")</Hidden>
                   </Visibility>
                 </TablixMember>
                 <TablixMember>
@@ -3471,12 +3477,17 @@ Fields!current_op_machine.Value = "Hold","Red")</BackgroundColor>
                 </TablixMember>
                 <TablixMember>
                   <Visibility>
-                    <Hidden>=NOT(Parameters!DepartmentID.Value = 5)</Hidden>
+                    <Hidden>=NOT(Parameters!DepartmentID.Value = "6")</Hidden>
                   </Visibility>
                 </TablixMember>
                 <TablixMember>
                   <Visibility>
-                    <Hidden>=NOT(Parameters!DepartmentID.Value = "8")</Hidden>
+                    <Hidden>=NOT(Parameters!DepartmentID.Value = "5" OR Parameters!DepartmentID.Value = "10")</Hidden>
+                  </Visibility>
+                </TablixMember>
+                <TablixMember>
+                  <Visibility>
+                    <Hidden>=NOT(Parameters!DepartmentID.Value = "8" OR Parameters!DepartmentID.Value = "29")</Hidden>
                   </Visibility>
                 </TablixMember>
                 <TablixMember />
@@ -3548,7 +3559,7 @@ Fields!current_op_machine.Value = "Hold","Red")</BackgroundColor>
                       </Style>
                     </TextRun>
                     <TextRun>
-                      <Value>=Globals!ExecutionTime</Value>
+                      <Value>="Publish Date:  " + First(Fields!last_update_date.Value, "SchedulePublishDate")</Value>
                       <Style>
                         <FontFamily>Segoe UI Light</FontFamily>
                         <FontSize>24pt</FontSize>

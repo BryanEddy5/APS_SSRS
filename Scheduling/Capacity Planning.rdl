@@ -190,6 +190,17 @@ ORDER BY setup_start_date, machine_name</CommandText>
         </Field>
       </Fields>
     </DataSet>
+    <DataSet Name="SchedulePublishDate">
+      <SharedDataSet>
+        <SharedDataSetReference>SchedulePublishDate</SharedDataSetReference>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="last_update_date">
+          <DataField>last_update_date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
   </DataSets>
   <ReportSections>
     <ReportSection>
@@ -202,7 +213,15 @@ ORDER BY setup_start_date, machine_name</CommandText>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Capacity Planning</Value>
+                    <Value>Capacity Planning  </Value>
+                    <Style>
+                      <FontFamily>Segoe UI Light</FontFamily>
+                      <FontSize>24pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>="Publish Date:  " + First(Fields!last_update_date.Value, "SchedulePublishDate")</Value>
                     <Style>
                       <FontFamily>Segoe UI Light</FontFamily>
                       <FontSize>24pt</FontSize>
@@ -215,7 +234,7 @@ ORDER BY setup_start_date, machine_name</CommandText>
             </Paragraphs>
             <rd:DefaultName>textbox1</rd:DefaultName>
             <Height>0.43in</Height>
-            <Width>33in</Width>
+            <Width>11in</Width>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
@@ -2933,14 +2952,14 @@ ORDER BY setup_start_date, machine_name</CommandText>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>Query</DataSetName>
-            <Top>0.43in</Top>
+            <Top>0.47167in</Top>
             <Height>0.64in</Height>
             <Width>32in</Width>
             <ZIndex>1</ZIndex>
             <Style />
           </Tablix>
         </ReportItems>
-        <Height>1.07in</Height>
+        <Height>1.11167in</Height>
         <Style />
       </Body>
       <Width>33in</Width>
