@@ -68,6 +68,7 @@
     <Report Include="Capacity Planning.rdl" />
     <Report Include="Late Orders.rdl" />
     <Report Include="Production Schedule.rdl" />
+    <Report Include="WIP View.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
 </Project>

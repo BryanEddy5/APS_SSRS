@@ -3,9 +3,20 @@
   <DataSet Name="DataSet1">
     <Query>
       <DataSourceReference>PlanetTogether_Data</DataSourceReference>
-      <CommandText>SELECT * 
+      <CommandText>SELECT MachineID,
+       MachineName,
+       MachineGroupID,
+       Plant,
+       Department,
+       ShareResource,
+       Grouping,
+       CapacityTypeID,
+       MachineRunEffeciency,
+       MachineSetupEffeciency,
+       ManualSchedule,
+       DepartmentID
 FROM Setup.vMachineNames
-</CommandText>
+ORDER BY MachineName</CommandText>
     </Query>
     <Fields>
       <Field Name="MachineID">
