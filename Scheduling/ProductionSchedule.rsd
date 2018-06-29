@@ -7,16 +7,64 @@
       <DataSetParameters>
         <DataSetParameter Name="@Equipment">
           <ReadOnly>false</ReadOnly>
-          <Nullable>true</Nullable>
+          <Nullable>false</Nullable>
           <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
         </DataSetParameter>
       </DataSetParameters>
-      <CommandText>SELECT *
-FROM Scheduling.vProductionSchedule P
-WHERE @Equipment = P.[current_op_machine]</CommandText>
+      <CommandText>SELECT planned_setup_start,
+       planned_setup_end,
+       previous_op_machine,
+       previous_op_status,
+       current_op_machine,
+       current_op_status,
+       next_op_machine,
+       dj_number,
+       sf_group_id,
+       job,
+       op,
+       setup,
+       customer,
+       order_number,
+       order_scheduled_end_date,
+       oracle_dj_status,
+       part_no,
+       job_qty,
+       ujcm,
+       earliest_material_availability_date,
+       need_date,
+       promise_date,
+       schedule_ship_date,
+       scheduled_end_date,
+       scheduled_run_hours,
+       scheduled_setup_hours,
+       scheduled_total_hours,
+       late_order,
+       remake,
+       last_update_date,
+       Plant,
+       Department,
+       DepartmentID,
+       NominalOD,
+       NumberCorePositions,
+       UpJacketCM,
+       JacketMaterial,
+       EndsOfAramid,
+       fiberset,
+       stage,
+       PromiseLatenessDays,
+       FiberCount,
+       CableColor,
+       Printed
+FROM Scheduling.vProductionSchedule
+WHERE @Equipment = [current_op_machine]</CommandText>
       <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
     </Query>
     <Fields>
+      <Field Name="sf_group_id">
+        <DataField>sf_group_id</DataField>
+        <rd:UserDefined>true</rd:UserDefined>
+      </Field>
       <Field Name="planned_setup_start">
         <DataField>planned_setup_start</DataField>
         <rd:TypeName>System.DateTime</rd:TypeName>
@@ -69,9 +117,13 @@ WHERE @Equipment = P.[current_op_machine]</CommandText>
         <DataField>order_number</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
+      <Field Name="order_scheduled_end_date">
+        <DataField>order_scheduled_end_date</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
       <Field Name="oracle_dj_status">
         <DataField>oracle_dj_status</DataField>
-        <rd:TypeName>System.DateTime</rd:TypeName>
+        <rd:TypeName>System.String</rd:TypeName>
       </Field>
       <Field Name="part_no">
         <DataField>part_no</DataField>
@@ -79,35 +131,39 @@ WHERE @Equipment = P.[current_op_machine]</CommandText>
       </Field>
       <Field Name="job_qty">
         <DataField>job_qty</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
+        <rd:TypeName>System.Double</rd:TypeName>
       </Field>
       <Field Name="ujcm">
         <DataField>ujcm</DataField>
-        <rd:TypeName>System.Double</rd:TypeName>
-      </Field>
-      <Field Name="promise_date">
-        <DataField>promise_date</DataField>
-        <rd:TypeName>System.DateTime</rd:TypeName>
+        <rd:TypeName>System.String</rd:TypeName>
       </Field>
       <Field Name="earliest_material_availability_date">
         <DataField>earliest_material_availability_date</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
-      </Field>
-      <Field Name="scheduled_end_date">
-        <DataField>scheduled_end_date</DataField>
         <rd:TypeName>System.DateTime</rd:TypeName>
       </Field>
       <Field Name="need_date">
         <DataField>need_date</DataField>
         <rd:TypeName>System.DateTime</rd:TypeName>
       </Field>
+      <Field Name="promise_date">
+        <DataField>promise_date</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="schedule_ship_date">
+        <DataField>schedule_ship_date</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="scheduled_end_date">
+        <DataField>scheduled_end_date</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
       <Field Name="scheduled_run_hours">
         <DataField>scheduled_run_hours</DataField>
-        <rd:TypeName>System.DateTime</rd:TypeName>
+        <rd:TypeName>System.Double</rd:TypeName>
       </Field>
       <Field Name="scheduled_setup_hours">
         <DataField>scheduled_setup_hours</DataField>
-        <rd:TypeName>System.DateTime</rd:TypeName>
+        <rd:TypeName>System.Double</rd:TypeName>
       </Field>
       <Field Name="scheduled_total_hours">
         <DataField>scheduled_total_hours</DataField>
@@ -115,7 +171,15 @@ WHERE @Equipment = P.[current_op_machine]</CommandText>
       </Field>
       <Field Name="late_order">
         <DataField>late_order</DataField>
-        <rd:TypeName>System.Double</rd:TypeName>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="remake">
+        <DataField>remake</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="last_update_date">
+        <DataField>last_update_date</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
       </Field>
       <Field Name="Plant">
         <DataField>Plant</DataField>
@@ -127,51 +191,51 @@ WHERE @Equipment = P.[current_op_machine]</CommandText>
       </Field>
       <Field Name="DepartmentID">
         <DataField>DepartmentID</DataField>
-        <rd:TypeName>System.DateTime</rd:TypeName>
-      </Field>
-      <Field Name="sf_group_id">
-        <DataField>sf_group_id</DataField>
-        <rd:UserDefined>true</rd:UserDefined>
-      </Field>
-      <Field Name="remake">
-        <DataField>remake</DataField>
-        <rd:TypeName>System.Double</rd:TypeName>
-      </Field>
-      <Field Name="PromiseLatenessDays">
-        <DataField>PromiseLatenessDays</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
-      </Field>
-      <Field Name="CableColor">
-        <DataField>CableColor</DataField>
         <rd:TypeName>System.Int32</rd:TypeName>
       </Field>
       <Field Name="NominalOD">
         <DataField>NominalOD</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
+        <rd:TypeName>System.Double</rd:TypeName>
       </Field>
       <Field Name="NumberCorePositions">
         <DataField>NumberCorePositions</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
+        <rd:TypeName>System.Int32</rd:TypeName>
       </Field>
       <Field Name="UpJacketCM">
         <DataField>UpJacketCM</DataField>
-        <rd:TypeName>System.Int32</rd:TypeName>
+        <rd:TypeName>System.String</rd:TypeName>
       </Field>
       <Field Name="JacketMaterial">
         <DataField>JacketMaterial</DataField>
-        <rd:TypeName>System.Double</rd:TypeName>
+        <rd:TypeName>System.String</rd:TypeName>
       </Field>
       <Field Name="EndsOfAramid">
         <DataField>EndsOfAramid</DataField>
         <rd:TypeName>System.Int32</rd:TypeName>
       </Field>
+      <Field Name="fiberset">
+        <DataField>fiberset</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="stage">
+        <DataField>stage</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="PromiseLatenessDays">
+        <DataField>PromiseLatenessDays</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
       <Field Name="FiberCount">
         <DataField>FiberCount</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="CableColor">
+        <DataField>CableColor</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
       <Field Name="Printed">
         <DataField>Printed</DataField>
-        <rd:TypeName>System.Double</rd:TypeName>
+        <rd:TypeName>System.Boolean</rd:TypeName>
       </Field>
     </Fields>
   </DataSet>
